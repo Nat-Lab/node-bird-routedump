@@ -15,7 +15,8 @@ Dump RIB from BIRD (BIRD Internet Routing Daemon).
 var NBRD = require('node-bird-routedump');
 
 async function dump_route () {
-  var routes = await NBRD('/var/run/bird/bird6.ctl');
+  var routes = await NBRD({ctrl_soc: '/var/run/bird/bird6.ctl'});
+  // or: routes = await NBRD({cmd: '/usr/sbin/birdc6'});
   console.log(routes);
 }
 

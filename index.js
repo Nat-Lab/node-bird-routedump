@@ -1,4 +1,4 @@
-var net = require("net");
+var net = require("net"), exec = require('child_process').exec;
 
 var parse_route = function (route) {
   var routes = [];
@@ -55,16 +55,23 @@ var parse_route = function (route) {
   return routes;
 };
 
-var routeDump = function (ctrl_soc) {
-  return new Promise((res, rej) => {
-    var buf = '';
-    var client = net.createConnection(ctrl_soc, () => { client.write('show route all\n'); });
-    client.on('data', data => {
-      buf += data;
-      client.end();
-    });
-    client.on('error', err => rej(err));
-    client.on('end', () => res(parse_route(buf)));
+var routeDump = function ({ctrl_soc, cmd}) {  
+  return new Promise((res, rej) => {  
+    if (ctrl_soc) {  
+      var buf = '';  
+      var client = net.createConnection(ctrl_soc, () => { client.write('show route all\n'); });  
+      client.on('data', data => {  
+        buf += data;  
+        client.end();  
+      });  
+      client.on('error', err => rej(err));  
+      client.on('end', () => res(parse_route(buf)));  
+    } else {  
+      exec(cmd + " -v 'show route all'", {maxBuffer: 1024 * 102400}, (err, stdout, stderr) => {  
+        if(err) rej(err);
+        else res(parse_route(stdout));
+      });
+    };
   });
 };
 
