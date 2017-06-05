@@ -31,7 +31,7 @@ dump_route();
     peer: 'he',
     uptime: '15:49:54',
     types: [ 'BGP', 'unicast', 'univ' ],
-    origin: undefined,
+    origin: 'IGP',
     as_path: [ 6939, ..., ... ],
     next_hop: [ '2001:470:17:24::1', 'fe80::d8da:dd02' ] },
     bgp_community: [ '65500:7000', '65500:1666' ],

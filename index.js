@@ -25,7 +25,7 @@ var parse_route = function (route) {
           robj.types = rline.split(' ').slice(2);
           break;
         case 1012:
-          robj.origin = rline.split(' ')[4];
+          robj.origin = rline.split(' ')[2];
       }
     } else {
       var rbase = line.split(' ').slice(1);
