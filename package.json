@@ -1,0 +1,24 @@
+{
+  "name": "node-bird-routedump",
+  "version": "0.0.5",
+  "description": "Dump BIRD routes as Javascript objects array.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nat-Lab/node-bird-routedump.git"
+  },
+  "keywords": [
+    "routing",
+    "bird",
+    "bgp"
+  ],
+  "author": "nat <nat@nat.moe>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Nat-Lab/node-bird-routedump/issues"
+  },
+  "homepage": "https://github.com/Nat-Lab/node-bird-routedump#readme"
+}

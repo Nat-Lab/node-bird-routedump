@@ -1,6 +1,8 @@
 node-bird-routedump 
 ---
 
+Deprecated, use [nat-lab/node-bird-routeparse](https://github.com/Nat-Lab/node-bird-routeparse) instead.
+
 Dump RIB from BIRD (BIRD Internet Routing Daemon).
 
 
