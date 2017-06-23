@@ -14,8 +14,9 @@ var parse_route = function (route) {
         case 1007:
           var rinfo = rline.split(' ');
           if (robj.route) routes.push(robj);
+          var last = robj;
           robj = {};
-          robj.route = rinfo[0];
+          robj.route = rinfo[0] == '' ? last.route : rinfo[0];
           robj.via = rinfo[2];
           robj.dev = rinfo[4];
           robj.peer = rinfo[5].substring(1);

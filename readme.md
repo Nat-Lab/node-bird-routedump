@@ -7,7 +7,6 @@ Dump RIB from BIRD (BIRD Internet Routing Daemon).
 ### Todo
 
 - Support recursive route
-- Support multipath
 
 ### Usage
 
