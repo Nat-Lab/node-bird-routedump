@@ -62,7 +62,19 @@ var routeDump = function ({ctrl_soc, cmd}) {
       var buf = '';  
       var client = net.createConnection(ctrl_soc, () => { client.write('show route all\n'); });  
       client.on('data', data => {  
-        buf += data;  
+        buf += data;
+
+        // fix: to fetch all data let's wait for magic sequence at the end
+        const l = data.length;
+        if (    data[l-1] === 0x0a && // "\n"
+                data[l-2] === 0x20 && // " "
+                data[l-3] === 0x30 && // "0"
+                data[l-4] === 0x30 && // "0"
+                data[l-5] === 0x30 && // "0"
+                data[l-6] === 0x30) { // "0"
+                client.end();
+        }
+
         client.end();  
       });  
       client.on('error', err => rej(err));  
